@@ -1,0 +1,61 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "command": "bash",
+  "type": "shell",
+  "args": ["-c"],
+  "inputs": [
+    {
+      "id": "version-number",
+      "type": "promptString",
+      "description": "Enter a version number"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "npm install",
+      "type": "shell",
+      "group": "build",
+      "command": ["npm install"],
+      "problemMatcher": []
+    },
+    {
+      "label": "build-serve-Docusaurus",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": [
+        "export NODE_OPTIONS=--max-old-space-size=10248 && npm run docusaurus clear && npm run build && npm run serve"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "start-Docusaurus",
+      "type": "shell",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "command": [
+        "export NODE_OPTIONS=--max-old-space-size=10248 && npm run start"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "version-documentation",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      // "command": [
+      //   "rm -rf versioned_docs/ versioned_sidebars/ versions.json && npm run docusaurus docs:version ${input:version-number}"
+      // ],
+      "command": ["npm run docusaurus docs:version ${input:version-number}"],
+      "problemMatcher": []
+    }
+  ]
+}

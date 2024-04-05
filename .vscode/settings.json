@@ -1,0 +1,7 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///home/infraredaces/Documents/GP2040-CE/.github/workflows/deploy.yml"
+  },
+  "cSpell.words": ["easyops", "frontmatter", "hideable"]
+}
